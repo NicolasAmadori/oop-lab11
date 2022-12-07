@@ -24,10 +24,7 @@ namespace ComplexAlgebra
 
         public double Phase 
         {
-            get
-            {
-                return 2 * Math.Atan(Imaginary / (Modulus + Real));
-            }
+            get => Math.Atan2(Imaginary, Real);
         }
         
         public Complex Complement() => new Complex(Real, -Imaginary);
@@ -47,9 +44,9 @@ namespace ComplexAlgebra
         public override string ToString()
         {            
             if(Real == 0 && Imaginary == 0) return "0";
-            else if(Real == 0) return (Imaginary == 1 ? "i" : Imaginary + "i");
+            else if(Real == 0) return ((Imaginary == 1) ? "i" : (Imaginary == -1 ? "-i" : Imaginary + "i"));
             else if (Imaginary == 0) return Real.ToString();
-            else return $"{Real} {(Imaginary > 0 ? "+" : "")} {(Imaginary == 1 ? "i" : Imaginary + "i")}";
+            else return $"{Real}{(Imaginary > 0 ? "+" : "")}{((Imaginary == 1) ? "i" : (Imaginary == -1 ? "-i" : Imaginary + "i"))}";
         }
 
         public override bool Equals(object obj)
