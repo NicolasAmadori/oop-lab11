@@ -2,7 +2,7 @@ namespace Indexers
 {
     using System.Linq;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+    
     [TestClass]
     public class Map2DTests
     {
