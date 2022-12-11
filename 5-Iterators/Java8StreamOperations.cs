@@ -150,10 +150,12 @@ namespace Iterators
         /// <returns>the new sequence.</returns>
         public static IEnumerable<TAny> TakeWhile<TAny>(this IEnumerable<TAny> sequence, Predicate<TAny> predicate)
         {
-            bool stop = true;
+            bool stop = false;
             foreach(TAny t in sequence)
-                if(stop == false ? false : predicate(t))
-                    yield return t;
+            {
+                if(!predicate(t)) stop = true;
+                if(!stop) yield return t;
+            }    
         }
 
         /// <summary>
